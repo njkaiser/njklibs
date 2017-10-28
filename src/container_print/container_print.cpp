@@ -1,4 +1,4 @@
-//
+#include <container_print.hpp>
 
 #include <iostream>
 #include <vector>
@@ -63,4 +63,20 @@ std::ostream& operator<<(std::ostream& out, const std::list<T> &l) {
   }
   out << l.back();
   return out;
+}
+
+TreePrint::TreePrint(Node* root) {
+  if(root == NULL) { return; } // handle base case of null tree
+  leftmost = 0;
+  traverse(root, 0, 0);
+}
+
+// PRINT BINARY TREE
+void TreePrint::traverse(Node* N, int lat, int dep) {
+  if(N == NULL) { return; } // handle base case of null tree
+  if(dep >= output.size()) { output.push_back(std::vector<Metadata>()); }
+  if(lat < leftmost) { leftmost = lat; }
+  output[dep].push_back(Metadata(N->val, lat, dep));
+  if(N->L != NULL) { traverse(N->L, lat-1, dep+1); }
+  if(N->R != NULL) { traverse(N->R, lat+1, dep+1); }
 }
