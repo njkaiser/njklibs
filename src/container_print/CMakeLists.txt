@@ -2,8 +2,10 @@ cmake_minimum_required(VERSION 2.6)
 project(container_print_est)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/home/njk/njklibs/src/container_print/include")
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+#message(STATUS "cmake source directory is ${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 add_library(container_print SHARED container_print.cpp)
 

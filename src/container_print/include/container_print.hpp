@@ -43,19 +43,20 @@ struct Metadata {
   int dep;
   // T val;
   char val;
+  int kids;
   // Metadata(int p, int l, T v) : lat(p), dep(l), val(v) {}
-  Metadata(char v, int l, int d) : val(v), lat(l), dep(d) {}
+  Metadata(char v, int l, int d, int k) : val(v), lat(l), dep(d), kids(k) {}
 };
 
+// main class for tree printing
 // template<typename T>
 class TreePrint {
-
 public:
-  // TreePrint();
-  TreePrint(Node* root);
-  void traverse(Node* N, int lat, int dep);
+  TreePrint(const Node* root);
 
-// private:
-  std::vector< std::vector<Metadata> > output;
+private:
   int leftmost;
+  std::vector< std::vector<Metadata> > output;
+  void traverse(const Node* N, const int lat, const int dep);
+  void print_tree();
 };
