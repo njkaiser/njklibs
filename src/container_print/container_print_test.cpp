@@ -48,15 +48,15 @@ int main(int argc, char** argv)
   cout << "  chars = " << charslist   << endl;
   cout << "  bools = " << boolslist   << endl;
 
-  Node* A = new Node('a');
-  Node* B = new Node('b');
-  Node* C = new Node('c');
-  Node* D = new Node('d');
-  Node* E = new Node('e');
-  Node* F = new Node('f');
-  Node* G = new Node('g');
-  Node* H = new Node('h');
-  Node* I = new Node('i');
+  Node<char>* A = new Node<char>('a');
+  Node<char>* B = new Node<char>('b');
+  Node<char>* C = new Node<char>('c');
+  Node<char>* D = new Node<char>('d');
+  Node<char>* E = new Node<char>('e');
+  Node<char>* F = new Node<char>('f');
+  Node<char>* G = new Node<char>('g');
+  Node<char>* H = new Node<char>('h');
+  Node<char>* I = new Node<char>('i');
   A->L = B;
   A->R = C;
   B->L = D;
@@ -66,8 +66,31 @@ int main(int argc, char** argv)
   E->R = H;
   F->R = I;
 
-  TreePrint TP(A);
+  cout << "\nTREES:" << endl;
+  cout << "char tree:" << endl;
+  TreePrint<char> TP1(A);
+  delete A, B, C, D, E, F, G, H, I;
 
-  delete A, B, C, D, E, F, G;
+  cout << "\nint tree:" << endl;
+  Node<int>* one = new Node<int>(1);
+  Node<int>* two = new Node<int>(2);
+  Node<int>* three = new Node<int>(3);
+  Node<int>* four = new Node<int>(4);
+  Node<int>* five = new Node<int>(5);
+  Node<int>* six = new Node<int>(6);
+  Node<int>* seven = new Node<int>(7);
+  Node<int>* eight = new Node<int>(8);
+  Node<int>* nine = new Node<int>(9);
+  one->L = two;
+  one->R = three;
+  two->L = four;
+  three->L = five;
+  three->R = six;
+  four->R = seven;
+  five->R = eight;
+  six->R = nine;
+  TreePrint<int> TP2(one);
+  delete one, two, three, four, five, six, seven, eight, nine;
+
   return 0;
 }
